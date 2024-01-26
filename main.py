@@ -63,7 +63,7 @@ async def submit(request: Request):
     }
     print(result)
     db_connect.db_add_daily_menu(result['staple'], result['dish1'], result['dish2'])
-    # return RedirectResponse(url='/all_result')
+    return 'Done update!'
 
 
 @app.get("/all_results")
