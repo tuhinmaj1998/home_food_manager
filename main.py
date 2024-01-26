@@ -39,6 +39,7 @@ result = []
 #         result.append(f'{db_result[1]}:{db_result[2]}')
 #         return templates.TemplateResponse("home3.html", {"request": request, "input1": input1, "result": result})
 
+
 # @app.post("/choose", response_class=HTMLResponse)
 @app.get("/choose", response_class=HTMLResponse)
 async def choose(request: Request):

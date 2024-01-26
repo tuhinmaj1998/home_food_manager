@@ -1,7 +1,6 @@
 import psycopg2
 import pandas as pd
 
-
 host = 'rain.db.elephantsql.com'
 database = 'rqlhbipg'
 username = 'rqlhbipg'
