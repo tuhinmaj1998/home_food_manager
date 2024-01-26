@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Choose Your Food</title>
+
+    <!-- Pikaday library links -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #666;
+            padding: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .date-filter {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1 class="text-center">Choose Your Food</h1>
+    </header>
+
+    <nav class="mb-3">
+        <!-- Navigation links go here -->
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <label for="dateFilter" class="mr-2">Filter by Date:</label>
+                <input type="text" id="dateFilter" class="date-filter">
+                <table id="foodTable">
+                    <!-- Table content goes here -->
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var picker = new Pikaday({
+                field: document.getElementById('dateFilter'),
+                format: 'YYYY-MM-DD',
+                onSelect: function () {
+                    // Fetch data and populate the table based on the selected date
+                    var selectedDate = picker.toString();
+                    fetchDataAndPopulateTable(selectedDate);
+                }
+            });
+
+            // Initial data load without a selected date
+            fetchDataAndPopulateTable();
+        });
+
+        function fetchDataAndPopulateTable(selectedDate) {
+            // TODO: Fetch data using AJAX based on the selected date
+            // Replace this with your actual data fetching mechanism
+            //var data = [
+            //    { "createddate": "2024-01-26", "staple": "Rice", "dish1": "Gobi", "dish2": "Panner-Tikka", "remarks": "None" },
+            //    { "createddate": "2024-01-27", "staple": "Roti", "dish1": "Chicken", "dish2": "Mutton", "remarks": "None" },
+            //];
+            var data = {{ data | safe }};
+
+
+            // Filter data based on the selected date
+            if (selectedDate) {
+                data = data.filter(item => item.createddate === selectedDate);
+            }
+
+            // Populate the table with filtered data
+            populateTable(data);
+        }
+
+        function populateTable(data) {
+            var table = document.getElementById('foodTable');
+
+            // Clear existing rows
+            table.innerHTML = '';
+
+            // Create header row
+            var headerRow = table.insertRow(0);
+            for (var key in data[0]) {
+                var th = document.createElement('th');
+                th.textContent = key;
+                headerRow.appendChild(th);
+            }
+
+            // Create data rows
+            data.forEach(function (rowData, index) {
+                var row = table.insertRow(index + 1);
+                for (var key in rowData) {
+                    var cell = row.insertCell();
+                    cell.textContent = rowData[key];
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>
