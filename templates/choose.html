@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-          integrity="sha512-xrF4+RGnPYgqZ62/Zmr1T3sEA+HsdUfPuvHsoVq0nSf0y+mP/uKlUipAg/qoZ7F4dIa9qy/n7dF0Gd8Is+A9iQ=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"-->
+<!--          integrity="sha512-xrF4+RGnPYgqZ62/Zmr1T3sEA+HsdUfPuvHsoVq0nSf0y+mP/uKlUipAg/qoZ7F4dIa9qy/n7dF0Gd8Is+A9iQ=="-->
+<!--          crossorigin="anonymous" referrerpolicy="no-referrer"/>-->
 
     <style>
         body {
@@ -96,10 +96,10 @@ nav a.active {
 </header>
 
 <nav class="mb-5">
-    <a href="#" class=""><i class="fas fa-home"></i> Home</a>
-    <a href="#" class=""><i class="fas fa-info-circle"></i> About</a>
-    <a href="#" class=" active"><i class="fas fa-envelope"></i> Choose Today's Menu</a>
-    <a href="#" class=""><i class="fas fa-envelope"></i> Check All Days Menus</a>
+    <a href="/" class=""><i class="fas fa-home"></i> Home</a>
+<!--    <a href="#" class=""><i class="fas fa-info-circle"></i> About</a>-->
+    <a href="/choose" class="active"><i class="fas fa-envelope"></i> Choose Today Menu</a>
+    <a href="/all_results" class=""><i class="fas fa-envelope"></i> Check All Menu</a>
 </nav>
 
 
@@ -241,6 +241,12 @@ nav a.active {
     selectedTextDiv.appendChild(table);
 }
 
+    function wait(timeout) {
+        return new Promise(resolve => {
+            setTimeout(resolve, timeout);
+        });
+    }
+
 
     async function updateSecondDropdown(sourceDropdownId, targetDropdownId, containerId) {
         var sourceDropdown = document.getElementById(sourceDropdownId);
@@ -319,6 +325,8 @@ nav a.active {
              .then(data => console.log("Submit response:", data))
              .catch(error => console.error('Error submitting data:', error));
 
+             wait(1000);
+             console.log('ok!')
              location.href = "/all_results";
         }
 

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Home Page</title>
+
+    <!-- Font Awesome CSS -->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-xrF4+RGnPYgqZ62/Zmr1T3sEA+HsdUfPuvHsoVq0nSf0y+mP/uKlUipAg/qoZ7F4dIa9qy/n7dF0Gd8Is+A9iQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />-->
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+        nav {
+            display: flex;
+            /*justify-content: center;*/
+            background-color: #666;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+nav a:hover {
+    color: #fff; /* Change to your desired color */
+    background-color: #333; /* Change to your desired color */
+}
+        nav a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 15px; /* Add some spacing between links */
+    color: #fff;
+}
+nav a {
+    transition: color 0.3s, background-color 0.3s;
+}
+
+@media (max-width: 468px) {
+    nav {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+nav a.active {
+            font-weight: bold;
+            color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1 class="text-center">Home Page</h1>
+    </header>
+
+    <nav class="mb-5">
+    <a href="/" class="active"><i class="fas fa-home"></i> Home</a>
+<!--    <a href="#" class=""><i class="fas fa-info-circle"></i> About</a>-->
+    <a href="/choose" class=""><i class="fas fa-envelope"></i> Choose Today Menu</a>
+    <a href="/all_results" class=""><i class="fas fa-envelope"></i> Check All Menu</a>
+</nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Your home page content goes here -->
+                <p>Welcome to the our deily menu app!</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

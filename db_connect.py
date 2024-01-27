@@ -1,14 +1,26 @@
-import psycopg2
+
+
 import pandas as pd
+import psycopg2
+
 
 host = 'rain.db.elephantsql.com'
+# host = str(os.environ['host'])
 database = 'rqlhbipg'
+
 username = 'rqlhbipg'
 password = 'nFReJlmf7g33cBJB0zgug5Q8S1m_aOAX'
 port = 5432
 
 
 def db_cursor():
+    # print('host')
+    # host = os.environ['host']
+    # print(host)
+    # database = os.environ['database']
+    # username = os.environ['username']
+    # password = os.environ['password']
+    # port = os.environ['port']
     conn = psycopg2.connect(host=host, dbname=database, user=username, password=password, port=port)
     return conn
 
@@ -71,6 +83,7 @@ def db_add_daily_menu(staple, dish1, dish2, remarks=None):
         values('{staple}', '{dish1}', '{dish2}', now()+interval '5.5 hour');""")
         conn.commit()
 
+
 def db_get_all_daily_menu():
     conn = db_cursor()
     cursor = conn.cursor()
@@ -81,6 +94,7 @@ def db_get_all_daily_menu():
     # daily_menus = [i for i in cursor.fetchall()]
     daily_menu = pd.read_sql_query(q, conn)
     return daily_menu
+
 
 def db_checkifbread(staple_id):
     conn = db_cursor()

@@ -28,9 +28,37 @@
 
         nav {
             display: flex;
-            justify-content: center;
+            /*justify-content: center;*/
             background-color: #666;
             padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        nav a:hover {
+    color: #fff; /* Change to your desired color */
+    background-color: #333; /* Change to your desired color */
+}
+nav a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 15px; /* Add some spacing between links */
+    color: #fff;
+}
+nav a {
+    transition: color 0.3s, background-color 0.3s;
+}
+
+@media (max-width: 468px) {
+    nav {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+nav a.active {
+            font-weight: bold;
+            color: yellow;
         }
 
         table {
@@ -101,10 +129,10 @@ nav a.active {
     </header>
 
     <nav class="mb-5">
-    <a href="#" class=""><i class="fas fa-home"></i> Home</a>
-    <a href="#" class=""><i class="fas fa-info-circle"></i> About</a>
-    <a href="#" class=""><i class="fas fa-envelope"></i> Choose Today's Menu</a>
-    <a href="#" class="active"><i class="fas fa-envelope"></i> Check All Days Menus</a>
+    <a href="/" class=""><i class="fas fa-home"></i> Home</a>
+<!--    <a href="#" class=""><i class="fas fa-info-circle"></i> About</a>-->
+    <a href="/choose" class=""><i class="fas fa-envelope"></i> Choose Today Menu</a>
+    <a href="/all_results" class="active"><i class="fas fa-envelope"></i> Check All Menu</a>
 </nav>
 
 
