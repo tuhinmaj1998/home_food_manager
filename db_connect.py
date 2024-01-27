@@ -82,4 +82,18 @@ def db_get_all_daily_menu():
     daily_menu = pd.read_sql_query(q, conn)
     return daily_menu
 
+def db_checkifbread(staple_id):
+    conn = db_cursor()
+    cursor = conn.cursor()
+    cursor.execute(f"""
+    select 
+    case
+        when upper(staple_category) in ('BREAD') then 1
+        else 0
+    end as isbread
+    from home_food_manager.staples 
+    where staple_id = {staple_id};""")
+    isbread = cursor.fetchone()[0]
+    return isbread
+
 # print(db_get_all_daily_menu())

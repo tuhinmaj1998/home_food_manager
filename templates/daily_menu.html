@@ -3,12 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
 
-    <title>Choose Your Food</title>
+    <title>Daily Menu</title>
 
     <!-- Pikaday library links -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
 
@@ -32,9 +34,17 @@
         }
 
         table {
-            width: 100%;
+            width: 200%;
             border-collapse: collapse;
             margin-top: 20px;
+        }
+
+        @media (max-width: 700px) {
+            table{
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
         }
 
         th, td {
@@ -46,23 +56,63 @@
         .date-filter {
             width: 200px;
         }
+
+        nav {
+            display: flex;
+            /*justify-content: center;*/
+            background-color: #666;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        nav a:hover {
+    color: #fff; /* Change to your desired color */
+    background-color: #333; /* Change to your desired color */
+}
+nav a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 15px; /* Add some spacing between links */
+    color: #fff;
+}
+nav a {
+    transition: color 0.3s, background-color 0.3s;
+}
+
+@media (max-width: 468px) {
+    nav {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+nav a.active {
+            font-weight: bold;
+            color: yellow;
+        }
     </style>
 </head>
 
 <body>
 
     <header>
-        <h1 class="text-center">Choose Your Food</h1>
+        <h1 class="text-center">Daily Menu</h1>
     </header>
 
-    <nav class="mb-3">
-        <!-- Navigation links go here -->
-    </nav>
+    <nav class="mb-5">
+    <a href="#" class=""><i class="fas fa-home"></i> Home</a>
+    <a href="#" class=""><i class="fas fa-info-circle"></i> About</a>
+    <a href="#" class=""><i class="fas fa-envelope"></i> Choose Today's Menu</a>
+    <a href="#" class="active"><i class="fas fa-envelope"></i> Check All Days Menus</a>
+</nav>
+
 
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <label for="dateFilter" class="mr-2">Filter by Date:</label>
+                <a class="btn btn-info" onclick="window.history.go(-1); return false;">Go Back</a>
+                <label for="dateFilter" class="mr-3">Filter by Date:</label>
                 <input type="text" id="dateFilter" class="date-filter">
                 <table id="foodTable">
                     <!-- Table content goes here -->

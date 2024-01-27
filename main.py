@@ -63,6 +63,7 @@ async def submit(request: Request):
     }
     print(result)
     db_connect.db_add_daily_menu(result['staple'], result['dish1'], result['dish2'])
+    # return RedirectResponse(url='/all_results', methods='GET')
     return 'Done update!'
 
 
@@ -93,7 +94,12 @@ async def get_dishes(staple_id):
     # print(dishes)
     return JSONResponse(content={"dishes": dishes})
 
-#
+
+@app.get('/api/checkifbread/{selectedstaple_id}')
+async def checkifbread(selectedstaple_id):
+    isbread = db_connect.db_checkifbread(selectedstaple_id)
+    return JSONResponse(content={"isbread": isbread})
+
 # @app.get("/api/staples")
 # async def get_staples():
 #     staples = db_connect.db_collect_staples()
