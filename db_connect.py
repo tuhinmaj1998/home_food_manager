@@ -36,12 +36,15 @@ def db_collect_staples():
 def db_collect_dishes(staple_id):
     conn = db_cursor()
     cursor = conn.cursor()
+    # cursor.execute(f"""
+    # select dish_name from home_food_manager.dish_suggestions ds
+    # join home_food_manager.staples s on s.staple_id = ds.staple_id
+    # join home_food_manager.dishes d on d.dish_id = ds.dish_id where ds.staple_id = {staple_id}
+    # group by dish_name;
+    # """)
     cursor.execute(f"""
-    select dish_name from home_food_manager.dish_suggestions ds
-    join home_food_manager.staples s on s.staple_id = ds.staple_id
-    join home_food_manager.dishes d on d.dish_id = ds.dish_id where ds.staple_id = {staple_id}
-    group by dish_name;
-    """)
+        select dish_name from home_food_manager.dishes order by dish_name;
+        """)
     dishes = [i[0] for i in cursor.fetchall()]
     return dishes
 

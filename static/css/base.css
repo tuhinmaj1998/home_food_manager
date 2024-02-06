@@ -1,0 +1,95 @@
+body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+nav {
+            display: flex;
+            /*justify-content: center;*/
+            background-color: #666;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        nav a:hover {
+    color: #fff; /* Change to your desired color */
+    background-color: #333; /* Change to your desired color */
+}
+nav a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 15px; /* Add some spacing between links */
+    color: #fff;
+}
+nav a {
+    transition: color 0.3s, background-color 0.3s;
+}
+
+@media (max-width: 468px) {
+    nav {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+nav a.active {
+            font-weight: bold;
+            color: yellow;
+        }
+
+        select {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        .dishDropdownContainer, #breadcountdiv {
+            display: none;
+        }
+
+        #selectedData {
+            margin-top: 20px;
+        }
+
+        .card {
+            width: 100%;
+        }
+
+
+.d_menu_table {
+            width: 200%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+@media (max-width: 700px) {
+    .d_menu_table{
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+}
+
+.d_menu_table th,  .d_menu_table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.date-filter {
+    width: 200px;
+}
+
